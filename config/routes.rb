@@ -1,5 +1,5 @@
 Marqueed::Application.routes.draw do
-  
+
   get "home" => 'home#index'
   get "home/login" => 'home#login'
   
@@ -7,6 +7,9 @@ Marqueed::Application.routes.draw do
   
   resources :users
   resources :images
+  resources :projects do
+    get 'projects' => 'projects/index'
+  end  
   
   devise_scope :user do
     get "login", :to => "devise/sessions#new"

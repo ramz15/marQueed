@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   # after_create :create_profile
   
   has_many :images
+  has_many :projects
+  has_one :profile
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']

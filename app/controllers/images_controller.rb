@@ -16,20 +16,24 @@ class ImagesController < ApplicationController
   end
   
   def create
-    @image = Image.new(params[:image])
-    # respond_to do |format|
-    #   if @image.save
-    #     format.html { render :nothing => :true}
-    #     format.js { render :nothing => true}
-    #   end
-    # end
-    if @image.save
-      flash[:success] = "Successfully uploaded an image"
-      redirect_to images_path and return
+    if user_signed_in?
+      @image = Image.new(params[:image])
+      # respond_to do |format|
+      #   if @image.save
+      #     format.html { render :nothing => :true}
+      #     format.js { render :nothing => true}
+      #   end
+      # end
+      if @image.save
+        flash[:success] = "Successfully uploaded an image"
+        redirect_to images_path and return
+      else
+        flash[:error] = "Error with image upload"
+        redirect_to new_image_path and return
+      end
     else
-      flash[:error] = "Error with image upload"
-      redirect_to new_image_path and return
-    end  
+      redirect_to root_path
+    end    
   end
   
   def destroy

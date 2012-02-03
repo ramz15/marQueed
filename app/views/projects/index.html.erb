@@ -1,0 +1,10 @@
+<div class="content">
+  <h3>My Projects</h3>
+  <% @projects.each do |project| %>
+    <ul>
+      <li><%= link_to project.name, project_path(project.id) %></li>
+    </ul>
+  <% end %>
+  
+  <a href="/projects/new">Create a new project</a>
+</div>

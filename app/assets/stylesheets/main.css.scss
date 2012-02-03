@@ -83,12 +83,11 @@ a:link, a:visited, a:active {
 .flash.success { color: green; }
 .flash.error { color: red; }
 
-#container {
-  position: fixed;
-//  background: transparent image-url("splash/noise.png") repeat;
-  height: 100%;
-  width: 100%;
+.content {
+  text-align: center;
+  padding-top: 20px;
 }
+
 #background {
   position:fixed;
   top:-50%;

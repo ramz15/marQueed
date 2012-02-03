@@ -1,0 +1,16 @@
+<div class="content">
+  <h1>Edit Project: <%= @project.name %></h1>
+  
+  <%= semantic_form_for @project, :class => '' do |f| %>
+    <%= f.semantic_errors %>
+    <%= f.inputs do %>
+      <%= f.input :name, :input_html => { :value => @project.name } %>
+    <% end %>
+    <%= f.buttons do %>
+      <%= f.commit_button :button_html => { :class => "primary" } %>
+    <% end %>
+  <% end %>
+  
+  <%= link_to "Delete Project", @project, :method => :delete, :confirm => "You sure?", :title => "Delete #{@project.name}" %> 
+  
+</div>

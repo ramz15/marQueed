@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Marqueed::Application.load_tasks
+Marqueed::Application.load_tasks 
