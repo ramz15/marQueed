@@ -186,6 +186,18 @@ a:link, a:visited, a:active {
   display: none;
 }
 
+// login
+
+.box { 
+  @include absolute-center(300px, 240px, $padding); 
+  margin: 0 auto;
+}
+
+.field {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
 // signup
 
 .icon.facebook {

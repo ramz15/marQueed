@@ -1,26 +1,34 @@
 Marqueed::Application.routes.draw do
   
-  get "home/index" => 'home#index'
-
+  get "home" => 'home#index'
   get "home/login" => 'home#login'
-
-  get "home/signup" => 'home#signup'
+  
+  devise_for :users
   
   resources :users
   resources :images
-
-  devise_for :users,
-             :controllers => {
-               :omniauth_callbacks => "users/omniauth_callbacks",
-               :sessions => 'sessions',
-               :registrations => 'registrations'
-             } do
-
-    # route :providers to 404 if doesn't exist
-    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
-
+  
+  devise_scope :user do
+    get "login", :to => "devise/sessions#new"
+    get "signup", :to => "devise/registrations#new"
   end
 
+  # devise_for :users,
+  #            :controllers => {
+  #              :omniauth_callbacks => "users/omniauth_callbacks",
+  #              :sessions => 'sessions',
+  #              :registrations => 'registrations'
+  #            } do
+  #              
+  # 
+  #   # route :providers to 404 if doesn't exist
+  #   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+  # 
+  # end
+  
+  # login and signup
+  # get '/login' => 'home#login', :as => :new_user_session
+  
   root :to => "home#index"
   
   # facebook channel process

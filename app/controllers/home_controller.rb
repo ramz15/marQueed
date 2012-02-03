@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   def index
     @title = "Marqueed"
-    @user = User.new
+    @user = current_user
     @images = Image.all
     @image = Image.new
   end

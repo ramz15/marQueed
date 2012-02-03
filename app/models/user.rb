@@ -5,7 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :id, :facebook_id, :email, :password, :password_confirmation, :remember_me, :name, :image
+  attr_accessible :id, :facebook_id, :username, :name, :email, 
+                  :password, :password_confirmation, :remember_me
+                  
+  # active record callbacks
+  # after_create :create_profile
   
   has_many :images
   
@@ -25,5 +29,12 @@ class User < ActiveRecord::Base
       User.create!(:facebook_id => data["id"], :name => data["name"], :email => data["email"], :password => Devise.friendly_token[0,20])
     end
   end
+  
+  protected
+  
+  # def create_profile
+  #   # a user profile is created every time a user is created.
+  #   Profile.create(:user_id => self.id)
+  # end
   
 end

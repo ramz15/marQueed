@@ -5,9 +5,10 @@ gem 'sqlite3'
 gem 'mysql2'
 gem 'therubyracer'
 gem 'carrierwave'
+gem 'dynamic_form'
 
-# authentication logic
-# and authorization
+
+# authentication logic and authorization
 gem 'devise', '1.4.9'
 gem 'omniauth', '0.3.2'
 gem 'cancan'

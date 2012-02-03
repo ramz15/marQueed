@@ -1,2 +1,18 @@
-<h1>Home#login</h1>
-<p>Find me in app/views/home/login.html.erb</p>
+<div class="box xsmall" id="login">
+
+  <h1><%= @title %></h1>
+
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, :class => "flash #{key}") %>
+  <% end %>
+
+  <%= form_for(@user, :url => user_session_path, :html => { :class => 'login-form' }) do |f| %>
+    <%= f.text_field :email, { :class => 'field', :placeholder => 'Email address'} %><br />
+    <%= f.password_field :password, { :class => 'field', :placeholder => 'Password'} %><br />
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me %><br />
+    <%= content_tag :button, :type => :submit, :class => 'submit' do %>
+       <span>Sign In</span>
+    <% end %>
+  <% end %>
+</div>

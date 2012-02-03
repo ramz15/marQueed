@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def create
+    @user = User.new
     @image = User.new(params[:image])
     if @image.save
     end

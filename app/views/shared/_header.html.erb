@@ -6,6 +6,15 @@
         <li class="active"><a href="/">Home</a></li>
         <li><a href="#designs">Designs</a></li>
         <li><a href="#" id="show_friends" data-controls-modal="my-modal" >Friends</a></li>
+        <li><%= current_user.email if user_signed_in? %></li>
+        <% if user_signed_in? %>
+        <li><%= link_to "Profile", '#' %></li>
+        <% end %>
+        <% if user_signed_in? %>
+        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>

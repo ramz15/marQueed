@@ -7,11 +7,22 @@
     </div>
   <% end %>
   
+  <h1>Welcome to MarQueed</h1>
+  
   </br></br>
-  <div id="login">
-    <h2>Signup with Facebook</h2></br>
-    <%= link_to '', user_omniauth_authorize_path(:facebook), { :class => 'icon facebook', :id => 'fb' } %>
-  </div>  
+  
+  <% if user_signed_in? %>
+    <p>Hi, <%= @user.email %></p>
+  <% else %>
+    <div id="login">
+      <h2>Signup with Facebook</h2></br>
+      <%= link_to '', user_omniauth_authorize_path(:facebook), { :class => 'icon facebook', :id => 'fb' } %>
+    </div>
+    </br>
+    <h2><a href="/login">Login</a></h2>
+    </br>
+    <h2><a href="/signup">Signup</a></h2>
+  <% end %>  
   
   </br></br>    
   <div id="upload">
